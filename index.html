@@ -90,10 +90,12 @@
         }
 
         function findWinner(userIn, pcIn) {
+            if (userIn === pcIn) {
+                draws++;
+                return;
+            }
+
             if (userIn === 'r' ) {
-                if (pcIn === 'r') {
-                    draws++;
-                }
                 if (pcIn === 'p') {
                     pcWins++;
                 }
@@ -104,9 +106,6 @@
                 if (pcIn === 'r') {
                     userWins++;
                 }
-                if (pcIn === 'p') {
-                    draws++;
-                }
                 if (pcIn === 's') {
                     pcWins++;
                 }
@@ -116,9 +115,6 @@
                 }
                 if (pcIn === 'p') {
                     userWins++;
-                }
-                if (pcIn === 's') {
-                    draws++;
                 }
             }
         }
