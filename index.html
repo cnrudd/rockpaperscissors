@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Events!</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="jumbotron">
+                    <h1>Make Your move</h1>
+                    <input id="user-input" onkeyup="playGame(this)"></input>
+                    <h2>Your move:<span id="user-move"></span></h2>
+                    <h2>Computer move:<span id="computer-move"></span></h2>
+                    <h2>Winner:<span id="winner"></span></h2>
+                    <h2>Tallies</h2>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h3>User</h3><span id="user-count"></span>
+                            </div>
+                            <div class="col">
+                                <h3>Computer</h3><span id="computer-count"></span>
+                            </div>
+                            <div class="col">
+                                <h3>Draws</h3><span id="draw-count"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- We have to put this at the end of our document to ensure the user-text
+         span exists when we try to access it. -->
+    <script type="text/javascript">
+
+        var userInput = document.getElementById("user-input");
+        var userMove = document.getElementById("user-move");
+        var computerMove = document.getElementById("computer-move");
+        var winner = document.getElementById("winner");
+        var userCount = document.getElementById("user-count");
+        var computerCount = document.getElementById("computer-count");
+        var drawCount = document.getElementById("draw-count");
+
+        // Next, we give JavaScript a function to execute when onkeyup event fires.
+        //   document.onkeyup = function(event) {
+        //     userText.textContent = event.key;
+        //   };
+
+        var validMoves = ['r', 'p', 's'];
+        var userWins = 0;
+        var pcWins = 0;
+        var draws = 0;
+
+        function playGame(inpt) {
+            console.log('userMove:', inpt.value)
+         
+
+            var userIn = inpt.value;
+            userMove.textContent = userIn;
+
+            pcIn = getPCMove();
+            console.log('pcMove:', pcIn);
+            computerMove.textContent = pcIn;
+
+            findWinner(userIn, pcIn);
+
+            recordWin();
+
+        }
+
+        function recordWin() {
+            userCount.textContent = userWins;
+            computerCount.textContent = pcWins;
+            drawCount.textContent = draws;
+        }
+
+        function findWinner(userIn, pcIn) {
+            if (userIn === 'r' ) {
+                if (pcIn === 'r') {
+                    draws++;
+                }
+                if (pcIn === 'p') {
+                    pcWins++;
+                }
+                if (pcIn === 's') {
+                    userWins++;
+                }
+            } else if (userIn === 'p' ) {
+                if (pcIn === 'r') {
+                    userWins++;
+                }
+                if (pcIn === 'p') {
+                    draws++;
+                }
+                if (pcIn === 's') {
+                    pcWins++;
+                }
+            } else if (userIn === 's' ) {
+                if (pcIn === 'r') {
+                    pcWins++;
+                }
+                if (pcIn === 'p') {
+                    userWins++;
+                }
+                if (pcIn === 's') {
+                    draws++;
+                }
+            }
+        }
+
+        function getPCMove() {
+            var randomChoice = Math.random() * 3,
+                roundedDown = Math.floor(randomChoice);
+
+                console.log('randomChoice:', randomChoice);
+                console.log('roundedDown:', roundedDown);
+            return validMoves[roundedDown];
+        }
+
+    </script>
+</body>
+
+</html>
