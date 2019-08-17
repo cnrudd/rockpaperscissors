@@ -10,67 +10,69 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
 
-                <div class="jumbotron">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <h1>Rock, Paper, Scissors</h1>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <strong>Make your move: </strong><input id="user-input" onkeyup="playGame(this)"
-                                    maxlength="1"></input>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <strong>Your move: <span id="user-move"></span></strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <strong>Computer's move: <span id="computer-move"></span></strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <strong>This Game's Winner: <span id="winner"></span></strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <h2>Tallies</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <strong>User</strong><span id="user-count"></span>
-                                    </div>
-                                    <div class="col-4">
-                                        <strong>Computer</strong><span id="computer-count"></span>
-                                    </div>
-                                    <div class="col-4">
-                                        <strong>Draws</strong><span id="draw-count"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h1>Rock, Paper, Scissors</h1>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <strong>Make your move</strong> (type "r", "p", or "s"): <input id="user-input" onkeyup="playGame(this)"
+                    maxlength="1"></input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <strong>Your move:</strong> <span id="user-move"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <strong>Computer's move:</strong> <span id="computer-move"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <h2>Winner</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <strong><span id="winner">&nbsp;</span></strong>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col text-center">
+                <h2>Win Tallies</h2>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <div class="row">
+                    <div class="col-4">
+                        <h4>You</h4><span id="user-count"></span>
+                    </div>
+                    <div class="col-4">
+                        <h4>Draws</h4><span id="draw-count"></span>
+                    </div>
+                    <div class="col-4">
+                        <h4>Computer</h4><span id="computer-count"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
 
     <!-- We have to put this at the end of our document to ensure the user-text
          span exists when we try to access it. -->
@@ -85,6 +87,7 @@
         var drawCount = document.getElementById("draw-count");
 
         var validMoves = ['r', 'p', 's'];
+        var moves = ['rock', 'paper', 'scissors'];
         var userWins = 0;
         var pcWins = 0;
         var draws = 0;
@@ -107,8 +110,8 @@
         }
 
         function recordGame(userIn, pcIn) {
-            userMove.textContent = userIn;
-            computerMove.textContent = pcIn;
+            userMove.textContent = moves[validMoves.indexOf(userIn)];
+            computerMove.textContent = moves[validMoves.indexOf(pcIn)];
             userCount.textContent = userWins;
             computerCount.textContent = pcWins;
             drawCount.textContent = draws;
