@@ -15,7 +15,7 @@
             <div class="col-md-offset-2 col-md-8">
                 <div class="jumbotron">
                     <h1>Make Your move</h1>
-                    <input id="user-input" onkeyup="playGame(this)"></input>
+                    <input id="user-input" onkeyup="playGame(this)" maxlength="1"></input>
                     <h2>Your move:<span id="user-move"></span></h2>
                     <h2>Computer move:<span id="computer-move"></span></h2>
                     <h2>Winner:<span id="winner"></span></h2>
@@ -64,8 +64,14 @@
             console.log('userMove:', inpt.value)
          
 
-            var userIn = inpt.value;
+            var userIn = inpt.value.toLowerCase();
+            userInput.value = ''
+            if (!validMoves.includes(userIn)) {
+                return; // exit early
+            }
+
             userMove.textContent = userIn;
+        
 
             pcIn = getPCMove();
             console.log('pcMove:', pcIn);
