@@ -16,9 +16,9 @@
                 <div class="jumbotron">
                     <h1>Make Your move</h1>
                     <input id="user-input" onkeyup="playGame(this)" maxlength="1"></input>
-                    <h2>Your move:<span id="user-move"></span></h2>
-                    <h2>Computer move:<span id="computer-move"></span></h2>
-                    <h2>Winner:<span id="winner"></span></h2>
+                    <h2>Your move: <span id="user-move"></span></h2>
+                    <h2>Computer's move: <span id="computer-move"></span></h2>
+                    <h2>This Game's Winner: <span id="winner"></span></h2>
                     <h2>Tallies</h2>
                     <div class="container">
                         <div class="row">
@@ -54,6 +54,7 @@
         var userWins = 0;
         var pcWins = 0;
         var draws = 0;
+        var winnerName;
 
         function playGame(inpt) {
             console.log('userMove:', inpt.value)
@@ -82,6 +83,7 @@
             userCount.textContent = userWins;
             computerCount.textContent = pcWins;
             drawCount.textContent = draws;
+            winner.textContent = winnerName;
         }
 
         function findWinner(userIn, pcIn) {
@@ -94,10 +96,10 @@
 
             switch(outCome) {
                 case 2:
-                case -1: return pcWins++;
-                case 0: return draws++;
+                case -1: winnerName = 'Computer'; pcWins++; break;
+                case 0: winnerName = 'draw - no winner'; draws++; break;
                 case -2:
-                case 1: return userWins++;
+                case 1: winnerName = 'You'; userWins++; break;
             }
         }
 
