@@ -50,11 +50,6 @@
         var computerCount = document.getElementById("computer-count");
         var drawCount = document.getElementById("draw-count");
 
-        // Next, we give JavaScript a function to execute when onkeyup event fires.
-        //   document.onkeyup = function(event) {
-        //     userText.textContent = event.key;
-        //   };
-
         var validMoves = ['r', 'p', 's'];
         var userWins = 0;
         var pcWins = 0;
@@ -90,32 +85,19 @@
         }
 
         function findWinner(userIn, pcIn) {
-            if (userIn === pcIn) {
-                draws++;
-                return;
-            }
+            // ['r', 'p', 's']
+            //   0    1    2
+            // +1 = 1 , 2, 3
+            var userIdx = validMoves.indexOf(userIn) + 1,
+                pcIdx = validMoves.indexOf(pcIn) + 1,
+                outCome = userIdx - pcIdx;
 
-            if (userIn === 'r' ) {
-                if (pcIn === 'p') {
-                    pcWins++;
-                }
-                if (pcIn === 's') {
-                    userWins++;
-                }
-            } else if (userIn === 'p' ) {
-                if (pcIn === 'r') {
-                    userWins++;
-                }
-                if (pcIn === 's') {
-                    pcWins++;
-                }
-            } else if (userIn === 's' ) {
-                if (pcIn === 'r') {
-                    pcWins++;
-                }
-                if (pcIn === 'p') {
-                    userWins++;
-                }
+            switch(outCome) {
+                case 2:
+                case -1: return pcWins++;
+                case 0: return draws++;
+                case -2:
+                case 1: return userWins++;
             }
         }
 
