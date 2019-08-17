@@ -59,27 +59,22 @@
         function playGame(inpt) {
             console.log('userMove:', inpt.value)
          
-
             var userIn = inpt.value.toLowerCase();
             userInput.value = ''
             if (!validMoves.includes(userIn)) {
                 return; // exit early
             }
 
-            userMove.textContent = userIn;
-        
-
             pcIn = getPCMove();
             console.log('pcMove:', pcIn);
-            computerMove.textContent = pcIn;
-
+     
             findWinner(userIn, pcIn);
-
-            recordWin();
-
+            recordGame(userIn, pcIn);
         }
 
-        function recordWin() {
+        function recordGame(userIn, pcIn) {
+            userMove.textContent = userIn;
+            computerMove.textContent = pcIn;
             userCount.textContent = userWins;
             computerCount.textContent = pcWins;
             drawCount.textContent = draws;
