@@ -12,27 +12,61 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
+            <div class="col">
+
                 <div class="jumbotron">
-                    <h1>Make Your move</h1>
-                    <input id="user-input" onkeyup="playGame(this)" maxlength="1"></input>
-                    <h2>Your move: <span id="user-move"></span></h2>
-                    <h2>Computer's move: <span id="computer-move"></span></h2>
-                    <h2>This Game's Winner: <span id="winner"></span></h2>
-                    <h2>Tallies</h2>
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <h3>User</h3><span id="user-count"></span>
-                            </div>
-                            <div class="col">
-                                <h3>Computer</h3><span id="computer-count"></span>
-                            </div>
-                            <div class="col">
-                                <h3>Draws</h3><span id="draw-count"></span>
+                                <h1>Rock, Paper, Scissors</h1>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <strong>Make your move: </strong><input id="user-input" onkeyup="playGame(this)"
+                                    maxlength="1"></input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <strong>Your move: <span id="user-move"></span></strong>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <strong>Computer's move: <span id="computer-move"></span></strong>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <strong>This Game's Winner: <span id="winner"></span></strong>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h2>Tallies</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <strong>User</strong><span id="user-count"></span>
+                                    </div>
+                                    <div class="col-4">
+                                        <strong>Computer</strong><span id="computer-count"></span>
+                                    </div>
+                                    <div class="col-4">
+                                        <strong>Draws</strong><span id="draw-count"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -58,7 +92,7 @@
 
         function playGame(inpt) {
             console.log('userMove:', inpt.value)
-         
+
             var userIn = inpt.value.toLowerCase();
             userInput.value = ''
             if (!validMoves.includes(userIn)) {
@@ -67,7 +101,7 @@
 
             pcIn = getPCMove();
             console.log('pcMove:', pcIn);
-     
+
             findWinner(userIn, pcIn);
             recordGame(userIn, pcIn);
         }
@@ -89,7 +123,7 @@
                 pcIdx = validMoves.indexOf(pcIn) + 1,
                 outCome = userIdx - pcIdx;
 
-            switch(outCome) {
+            switch (outCome) {
                 case 2:
                 case -1: winnerName = 'Computer'; pcWins++; break;
                 case 0: winnerName = 'draw - no winner'; draws++; break;
@@ -102,8 +136,8 @@
             var randomChoice = Math.random() * 3,
                 roundedDown = Math.floor(randomChoice);
 
-                console.log('randomChoice:', randomChoice);
-                console.log('roundedDown:', roundedDown);
+            console.log('randomChoice:', randomChoice);
+            console.log('roundedDown:', roundedDown);
             return validMoves[roundedDown];
         }
 
