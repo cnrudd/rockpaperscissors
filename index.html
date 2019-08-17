@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <div class="jumbotron">
         <div class="container">
             <div class="row">
@@ -22,21 +21,28 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col">
-                <strong>Make your move</strong> (type "r", "p", or "s"): <input id="user-input" onkeyup="playGame(this)"
-                    maxlength="1"></input>
+            <div class="col  text-center">
+                <h3>Make your move</h3>
+                (type "r", "p", or "s")<br />
+                <input id="user-input" onkeyup="playGame(this)" maxlength="1" autofocus></input>
             </div>
         </div>
-        <div class="row">
+
+        <hr />
+
+        <div class="row text-center">
             <div class="col">
-                <strong>Your move:</strong> <span id="user-move"></span>
+                <h4>Your move</h4><span id="user-move">&nbsp;</span>
             </div>
-        </div>
-        <div class="row">
             <div class="col">
-                <strong>Computer's move:</strong> <span id="computer-move"></span>
-            </div>
+                </div>
+            <div class="col">
+                    <h4>Computer's move</h4><span id="computer-move">&nbsp;</span>
+                </div>
         </div>
+
+        <hr />
+
         <div class="row">
             <div class="col text-center">
                 <h2>Winner</h2>
@@ -47,7 +53,9 @@
                 <strong><span id="winner">&nbsp;</span></strong>
             </div>
         </div>
+
         <hr />
+
         <div class="row">
             <div class="col text-center">
                 <h2>Win Tallies</h2>
