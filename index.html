@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock, Paper, Scissors Game</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+
 </head>
 
 <body>
@@ -22,19 +24,28 @@
         <div class="row">
             <div class="col  text-center">
                 <h3>Make your move</h3>
-                (type "r", "p", or "s")<br />
-                <input id="user-input" onkeyup="playGame(this)" maxlength="1" autofocus></input>
             </div>
         </div>
-
-        <div class="row text-center">
-            <div class="col">
-                <h4>Your move</h4><span id="user-move">&nbsp;</span>
+        <div class="row">
+                <div class="col-3 d-none d-md-flex"></div>
+            <div class="col  text-center">
+                <img class="game-piece img-thumbnail" src="assets/img/rock-web.png" />
             </div>
+            <div class="col  text-center">
+                    <img class="game-piece img-thumbnail" src="assets/img/paper-web.png" />
+            </div>
+            <div class="col  text-center">
+                    <img class="game-piece img-thumbnail" src="assets/img/scissors-web.png" />
+            </div>
+            <div class="col-3 d-none d-md-flex"></div>
+        </div>
+        <div class="row text-center mt-5">
             <div class="col">
-                </div>
+                <h2>Your move</h2><span id="user-move">&nbsp;</span>
+            </div>
+            <div class="col"></div>
             <div class="col">
-                    <h4>Computer's move</h4><span id="computer-move">&nbsp;</span>
+                    <h2>Computer's move</h2><span id="computer-move">&nbsp;</span>
                 </div>
         </div>
 
@@ -78,12 +89,14 @@
     </div>
 
 
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
     <!-- We have to put this at the end of our document to ensure the user-text
          span exists when we try to access it. -->
     <script type="text/javascript">
 
-        var userInput = document.getElementById("user-input");
         var userMove = document.getElementById("user-move");
         var computerMove = document.getElementById("computer-move");
         var winner = document.getElementById("winner");
@@ -98,14 +111,13 @@
         var draws = 0;
         var winnerName;
 
-        function playGame(inpt) {
-            console.log('userMove:', inpt.value)
+        $('.game-piece').on('click', playGame);
 
-            var userIn = inpt.value.toLowerCase();
-            userInput.value = ''
-            if (!validMoves.includes(userIn)) {
-                return; // exit early
-            }
+        function playGame(evt) {
+            var pathSegments = evt.target.src.split('/'),
+                userIn = _.last(pathSegments)[0].toLowerCase();
+
+            console.log('userMove:', userIn);
 
             pcIn = getPCMove();
             console.log('pcMove:', pcIn);

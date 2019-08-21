@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Beth+Ellen|Permanent+Marker&display=swap');
+
+* {
+    font-family: 'Permanent Marker', cursive;
+}
+h1 {
+    font-family: 'Beth Ellen', cursive;
+    font-size: 3rem;
+}
+span {
+    font-size: 1.5rem;
+}
+.game-piece {
+    cursor: pointer;
+}
