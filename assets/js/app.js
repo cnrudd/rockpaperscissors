@@ -36,11 +36,11 @@ function recordGame(userIn, pcIn) {
 
 function highliteWinner() {
     const elMap = {
-        You: [userMove, userCount],
-        Computer: [computerMove, computerCount],
-        'draw - no winner': [drawCount]
+        you: [userMove, userCount],
+        computer: [computerMove, computerCount],
+        'drawnowinner': [drawCount]
     },
-        elArray = elMap[winnerName];
+        elArray = elMap[winnerName.toLowerCase().replace(/[-\s]/g,'')];
     
         _.forOwn(elMap, function(val, key) {
             var arr = elMap[key];
