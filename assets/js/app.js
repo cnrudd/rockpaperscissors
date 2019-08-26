@@ -40,17 +40,18 @@ function highliteWinner() {
         Computer: [computerMove, computerCount],
         'draw - no winner': [drawCount]
     },
-        el = elMap[winnerName];
+        elArray = elMap[winnerName];
     
-        Object.keys(elMap).forEach(function(key) {
-            elMap[key].forEach(function(item) {
+        _.forOwn(elMap, function(val, key) {
+            var arr = elMap[key];
+            arr.forEach(function(item) {
                 item.classList.replace('just-won-color', 'normal-color');
             })
-        })
+        });
 
 
-    if (el) {
-        el.forEach(function(item) {
+    if (elArray) {
+        elArray.forEach(function(item) {
             item.classList.replace('normal-color', 'just-won-color');
         })
     }
