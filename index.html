@@ -41,11 +41,11 @@
         </div>
         <div class="row text-center mt-5">
             <div class="col">
-                <h2>Your move</h2><span id="user-move">&nbsp;</span>
+                <h2>Your move</h2><span id="user-move" class="normal-color">&nbsp;</span>
             </div>
             <div class="col"></div>
             <div class="col">
-                    <h2>Computer's move</h2><span id="computer-move">&nbsp;</span>
+                    <h2>Computer's move</h2><span id="computer-move" class="normal-color">&nbsp;</span>
                 </div>
         </div>
 
@@ -66,20 +66,20 @@
 
         <div class="row">
             <div class="col text-center">
-                <h2>Win Tallies</h2>
+                <h2>Game Tally</h2>
             </div>
         </div>
         <div class="row text-center">
             <div class="col">
                 <div class="row">
                     <div class="col-4">
-                        <h4>You</h4><span id="user-count"></span>
+                        <h4>You</h4><span id="user-count" class="normal-color"></span>
                     </div>
                     <div class="col-4">
-                        <h4>Draws</h4><span id="draw-count"></span>
+                        <h4>Draws</h4><span id="draw-count" class="normal-color"></span>
                     </div>
                     <div class="col-4">
-                        <h4>Computer</h4><span id="computer-count"></span>
+                        <h4>Computer</h4><span id="computer-count" class="normal-color"></span>
                     </div>
                 </div>
             </div>
@@ -93,75 +93,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-    <!-- We have to put this at the end of our document to ensure the user-text
-         span exists when we try to access it. -->
-    <script type="text/javascript">
-
-        var userMove = document.getElementById("user-move");
-        var computerMove = document.getElementById("computer-move");
-        var winner = document.getElementById("winner");
-        var userCount = document.getElementById("user-count");
-        var computerCount = document.getElementById("computer-count");
-        var drawCount = document.getElementById("draw-count");
-
-        var validMoves = ['r', 'p', 's'];
-        var moves = ['rock', 'paper', 'scissors'];
-        var userWins = 0;
-        var pcWins = 0;
-        var draws = 0;
-        var winnerName;
-
-        $('.game-piece').on('click', playGame);
-
-        function playGame(evt) {
-            var pathSegments = evt.target.src.split('/'),
-                userIn = _.last(pathSegments)[0].toLowerCase();
-
-            console.log('userMove:', userIn);
-
-            pcIn = getPCMove();
-            console.log('pcMove:', pcIn);
-
-            findWinner(userIn, pcIn);
-            recordGame(userIn, pcIn);
-        }
-
-        function recordGame(userIn, pcIn) {
-            userMove.textContent = moves[validMoves.indexOf(userIn)];
-            computerMove.textContent = moves[validMoves.indexOf(pcIn)];
-            userCount.textContent = userWins;
-            computerCount.textContent = pcWins;
-            drawCount.textContent = draws;
-            winner.textContent = winnerName;
-        }
-
-        function findWinner(userIn, pcIn) {
-            // ['r', 'p', 's']
-            //   0    1    2
-            // +1 = 1 , 2, 3
-            var userIdx = validMoves.indexOf(userIn) + 1,
-                pcIdx = validMoves.indexOf(pcIn) + 1,
-                outCome = userIdx - pcIdx;
-
-            switch (outCome) {
-                case 2:
-                case -1: winnerName = 'Computer'; pcWins++; break;
-                case 0: winnerName = 'draw - no winner'; draws++; break;
-                case -2:
-                case 1: winnerName = 'You'; userWins++; break;
-            }
-        }
-
-        function getPCMove() {
-            var randomChoice = Math.random() * 3,
-                roundedDown = Math.floor(randomChoice);
-
-            console.log('randomChoice:', randomChoice);
-            console.log('roundedDown:', roundedDown);
-            return validMoves[roundedDown];
-        }
-
-    </script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
 </body>
 
 </html>
