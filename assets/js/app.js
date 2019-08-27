@@ -16,7 +16,7 @@ $('.game-piece').on('click', playGame);
 
 function playGame(evt) {
     var pathSegments = evt.target.src.split('/'),
-        userIn = _.last(pathSegments)[0].toLowerCase();
+        userIn = pathSegments[pathSegments.length - 1][0].toLowerCase();
 
     pcIn = getPCMove();
 
@@ -35,25 +35,25 @@ function recordGame(userIn, pcIn) {
 }
 
 function highliteWinner() {
-    const elMap = {
+    var elMap = {
         you: [userMove, userCount],
         computer: [computerMove, computerCount],
-        'drawnowinner': [drawCount]
+        drawnowinner: [drawCount]
     },
         elArray = elMap[winnerName.toLowerCase().replace(/[-\s]/g,'')];
     
-        _.forOwn(elMap, function(val, key) {
-            var arr = elMap[key];
-            arr.forEach(function(item) {
+        for(var prop in elMap) {
+            var arr = elMap[prop];
+            for (var item of arr) {
                 item.classList.replace('just-won-color', 'normal-color');
-            })
-        });
+            }
+        }
 
 
     if (elArray) {
-        elArray.forEach(function(item) {
+        for (var item of elArray) {
             item.classList.replace('normal-color', 'just-won-color');
-        })
+        }
     }
 }
 
