@@ -60,6 +60,7 @@ function highliteWinner() {
 }
 
 function findWinner(userIn, pcIn) {
+    alert('findWinner')
     // ['r', 'p', 's']
     //   0    1    2
     var userIdx = validMoves.indexOf(userIn),
@@ -78,6 +79,6 @@ function findWinner(userIn, pcIn) {
 function getPCMove() {
     var randomChoice = Math.random() * 3,
         roundedDown = Math.floor(randomChoice);
-
+        alert('getPCMove')
     return validMoves[roundedDown];
 }
