@@ -50,7 +50,7 @@ function highliteWinner() {
                 item.classList.replace('just-won-color', 'normal-color');
             }
         }
-
+alert('highliteWinner')
 
     if (elArray) {
         for (var item of elArray) {
