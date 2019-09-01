@@ -34,6 +34,7 @@ function recordGame(userIn, pcIn) {
     computerCount.textContent = pcWins;
     drawCount.textContent = draws;
     winner.textContent = winnerName;
+    alert('recordGame')
 }
 
 function highliteWinner() {
