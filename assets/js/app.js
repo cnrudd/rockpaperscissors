@@ -12,7 +12,9 @@ var pcWins = 0;
 var draws = 0;
 var winnerName;
 
-$('.game-piece').on('click', playGame);
+document.querySelectorAll('.game-piece').forEach(function(el) {
+    el.addEventListener('click', playGame);
+})
 
 function playGame(evt) {
     var pathSegments = evt.target.src.split('/'),
