@@ -43,15 +43,17 @@ function highliteWinner() {
         computer: [computerMove, computerCount],
         drawnowinner: [drawCount]
     },
-        elArray = elMap[winnerName.toLowerCase().replace(/[-\s]/g,'')];
+        elArray = elMap[winnerName.toLowerCase().replace(/[-\s]/g, '')];
     
+        alert('highliteWinner', elArray);
+
         for(var prop in elMap) {
             var arr = elMap[prop];
             for (var item of arr) {
                 item.classList.replace('just-won-color', 'normal-color');
             }
         }
-alert('highliteWinner')
+        alert('highliteWinner', elMap);
 
     if (elArray) {
         for (var item of elArray) {
