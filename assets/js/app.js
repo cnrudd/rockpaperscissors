@@ -26,26 +26,21 @@ function playGame(evt) {
 }
 
 function recordGame(userIn, pcIn) {
-    alert('recordGame -start', userIn, pcIn)
     userMove.textContent = moves[validMoves.indexOf(userIn)];
     computerMove.textContent = moves[validMoves.indexOf(pcIn)];
     userCount.textContent = userWins;
     computerCount.textContent = pcWins;
     drawCount.textContent = draws;
     winner.textContent = winnerName;
-    alert('recordGame -end')
 }
 
 function highliteWinner() {
-    alert('highlightwinner-start')
     var elMap = {
         you: [userMove, userCount],
         computer: [computerMove, computerCount],
         drawnowinner: [drawCount]
     },
         elArray = elMap[winnerName.toLowerCase().replace(/[-\s]/g, '')];
-    
-        alert('highliteWinner', elArray);
 
         for(var prop in elMap) {
             var arr = elMap[prop];
@@ -54,7 +49,6 @@ function highliteWinner() {
                 item.classList.add('normal-color');
             }
         }
-        alert('highliteWinner', elMap);
 
     if (elArray) {
         for (var item of elArray) {
