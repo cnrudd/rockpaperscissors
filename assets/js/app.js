@@ -12,6 +12,7 @@ var pcWins = 0;
 var draws = 0;
 var winnerName;
 
+alert($('.game-piece'))
 $('.game-piece').on('click', playGame);
 
 function playGame(evt) {
