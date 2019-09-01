@@ -50,14 +50,16 @@ function highliteWinner() {
         for(var prop in elMap) {
             var arr = elMap[prop];
             for (var item of arr) {
-                item.classList.replace('just-won-color', 'normal-color');
+                item.classList.remove('just-won-color');
+                item.classList.add('normal-color');
             }
         }
         alert('highliteWinner', elMap);
 
     if (elArray) {
         for (var item of elArray) {
-            item.classList.replace('normal-color', 'just-won-color');
+            item.classList.remove('normal-color');
+            item.classList.add('just-won-color');
         }
     }
 }
