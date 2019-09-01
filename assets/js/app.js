@@ -12,11 +12,9 @@ var pcWins = 0;
 var draws = 0;
 var winnerName;
 
-alert($('.game-piece'))
 $('.game-piece').on('click', playGame);
 
 function playGame(evt) {
-    alert('hi')
     var pathSegments = evt.target.src.split('/'),
         userIn = pathSegments[pathSegments.length - 1][0].toLowerCase();
 
@@ -39,6 +37,7 @@ function recordGame(userIn, pcIn) {
 }
 
 function highliteWinner() {
+    alert('highlightwinner-start')
     var elMap = {
         you: [userMove, userCount],
         computer: [computerMove, computerCount],
@@ -62,7 +61,6 @@ alert('highliteWinner')
 }
 
 function findWinner(userIn, pcIn) {
-    alert('findWinner')
     // ['r', 'p', 's']
     //   0    1    2
     var userIdx = validMoves.indexOf(userIn),
@@ -81,6 +79,5 @@ function findWinner(userIn, pcIn) {
 function getPCMove() {
     var randomChoice = Math.random() * 3,
         roundedDown = Math.floor(randomChoice);
-        alert('getPCMove')
     return validMoves[roundedDown];
 }
